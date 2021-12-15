@@ -23,6 +23,9 @@ public class DataConverter implements IFileConverter{
         String string = "";
         Charset charset = Charset.forName(charSet);
         char[] buffer = new char[BUFFERSIZE];
+        byte[] bytes;
+        String binarystring = "";
+        
         try (FileReader inputFile = new FileReader(inputFileName)){
            while ( inputFile.read(buffer) != -1){
                    string += new String(buffer);
@@ -40,14 +43,24 @@ public class DataConverter implements IFileConverter{
             System.out.println(ex.getMessage());
         } 
         
-        byte[] bytes = string.getBytes(charset);
-        String[] binary = new String[bytes.length];
-        String binarystring = "";
-        for(int i=0 ; i<bytes.length ; i++){
-            binary[i]=String.format("%8s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
-            binarystring += binary[i];
+        
+        try {
+            bytes = string.getBytes("UTF-8");
+      
+        StringBuilder binary = new StringBuilder();
+        for(byte b: bytes){
+            int val =b;
+            for(int i = 0; i < 8; i++){
+                binary.append((val & 128) == 0 ? 0 : 1);
+                val <<= 1;
+            }
             
-        } 
+            
+        }
+        
+          } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(DataConverter.class.getName()).log(Level.SEVERE, null, ex);
+        }
 //            System.out.println(binarystring);
         
         File outputFile = new File(outputFileName);
@@ -64,12 +77,12 @@ public class DataConverter implements IFileConverter{
         }
         
 
-        byte[] textByte = new byte[binary.length];
-        for(int i=0 ; i<bytes.length ; i++){
-            textByte[i] = Byte.parseByte(binary[i], 2);
-        }
-        
-        System.out.println(new String(textByte, charset));
+//        byte[] textByte = new byte[];
+//        for(int i=0 ; i<bytes.length ; i++){
+//            textByte[i] = Byte.parseByte(binary[i], 2);
+//        }
+//        
+//        System.out.println(new String(textByte, charset));
         
     return outputFileName;
     }
