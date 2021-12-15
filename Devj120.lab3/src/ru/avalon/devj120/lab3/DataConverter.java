@@ -69,7 +69,7 @@ try (FileWriter fw = new FileWriter(outputFile, false)){
 }
 
         } catch (UnsupportedEncodingException ex) {
-            System.err.println(ex.getMessage());;
+            System.err.println(ex.getMessage());
         } 
         return outputFileName;
     }
@@ -99,19 +99,29 @@ try (FileWriter fw = new FileWriter(outputFile, false)){
                textByte[i] = Byte.parseByte(bytesString[i], 2);
            }
            
-           
-//           char[] strToArray = binaryString.toCharArray();
-//           String[] textByte = new String[strToArray.length/8];
-//           for (String s: textByte){
-//           for( int i =0; i<8; i++){
-//               s+=textByte[i];   
-//           }
-           
-//           }
-//            String text = binaryString.;
-        System.out.println(new String(textByte, charset));
+
+
+
         
+        String original;
+//        try {
+            original = new String(textByte, charset);
+            System.out.println(original);
+//        } catch (UnsupportedEncodingException ex) {
+//            System.out.println(ex.getMessage());
+//        }
         
+//        System.out.println(original);
+//File outputFile = new File(outputFileName);
+//try {
+//    outputFile.createNewFile();
+//} catch (IOException ex) {
+//    System.out.println(ex.getMessage());
+//}
+
+
+
+
         
         return null;
         
