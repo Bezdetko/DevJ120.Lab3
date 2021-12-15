@@ -40,8 +40,10 @@ public class DataConverter implements IFileConverter{
             System.out.println(ex.getMessage());
         } 
         
-        byte[] bytes = string.getBytes(charset);
-        String[] binary = new String[bytes.length];
+        byte[] bytes;
+        try {
+            bytes = string.getBytes(charSet);
+            String[] binary = new String[bytes.length];
         String binarystring = "";
         for(int i=0 ; i<bytes.length ; i++){
             binary[i]=String.format("%8s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
@@ -51,7 +53,7 @@ public class DataConverter implements IFileConverter{
 //            System.out.println(binarystring);
         
         File outputFile = new File(outputFileName);
-        try {
+        try { if (!outputFile.exists())
             outputFile.createNewFile();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -70,6 +72,39 @@ public class DataConverter implements IFileConverter{
         }
         
         System.out.println(new String(textByte, charset));
+            
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(DataConverter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        String[] binary = new String[bytes.length];
+//        String binarystring = "";
+//        for(int i=0 ; i<bytes.length ; i++){
+//            binary[i]=String.format("%8s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
+//            binarystring += binary[i];
+//            
+//        } 
+////            System.out.println(binarystring);
+//        
+//        File outputFile = new File(outputFileName);
+//        try {
+//            outputFile.createNewFile();
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        
+//        try (FileWriter fw = new FileWriter(outputFile, false)){
+//            fw.write(binarystring);
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        
+//
+//        byte[] textByte = new byte[binary.length];
+//        for(int i=0 ; i<bytes.length ; i++){
+//            textByte[i] = Byte.parseByte(binary[i], 2);
+//        }
+//        
+//        System.out.println(new String(textByte, charset));
         
     return outputFileName;
     }
