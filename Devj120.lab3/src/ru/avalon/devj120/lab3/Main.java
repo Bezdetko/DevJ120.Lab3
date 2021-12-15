@@ -15,7 +15,8 @@ public class Main {
      */
     public static void main(String[] args) {
        DataConverter dc = new DataConverter();
-       dc.toBinary("original.txt", "Binary.txt", "UTF-8");
+       dc.toBinary("original2.txt", "Binary.txt", "ASCII");
+//        dc.toText("Binary.txt", "asdasd.txt", "ASCII");
     }
     
 }
