@@ -52,8 +52,11 @@ public class DataConverter implements IFileConverter{
                 binary[i]=String.format("%8s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
                 binarystring += binary[i];
                 
+//                binary[i]=Integer.toBinaryString(bytes[i]);                
+//                binarystring += binary[i];
+                
             } 
-//            System.out.println(binarystring);
+            System.out.println(binarystring);
 
 File outputFile = new File(outputFileName);
 try {
@@ -110,22 +113,30 @@ try (FileWriter fw = new FileWriter(outputFile, false)){
 //        } catch (UnsupportedEncodingException ex) {
 //            System.out.println(ex.getMessage());
 //        }
-        
-//        System.out.println(original);
-//File outputFile = new File(outputFileName);
-//try {
-//    outputFile.createNewFile();
-//} catch (IOException ex) {
-//    System.out.println(ex.getMessage());
-//}
+//        
+ 
+File outputFile = new File(outputFileName);
+try {
+    outputFile.createNewFile();
+} catch (IOException ex) {
+    System.out.println(ex.getMessage());
+}
+
+try (FileWriter fw = new FileWriter(outputFile, false)){
+    fw.write(original);
+} catch (IOException ex) {
+    System.out.println(ex.getMessage());
+}
 
 
-
-
-        
-        return null;
-        
+        return outputFileName;
     }
+
+
+        
+//        return null;
+//        
+//    }
 
     @Override
     public double getSum(String fileName) throws ConverterException {
