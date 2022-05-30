@@ -16,7 +16,13 @@ public class Main {
     public static void main(String[] args) {
        DataConverter dc = new DataConverter();
        dc.toBinary("original2.txt", "Binary2.txt", "UTF-8");
-        dc.toText("Binary2.txt", "redable1.txt", "UTF-8");
+//        dc.toText("Binary2.txt", "redable1.txt", "UTF-8");
+        
+//String substr = "1111111111111111111111111101000111111111111111111111111110001011" ;
+//                int count = Integer.parseInt(substr, 2);
+//                System.out.println(count);
+
+        
     }
     
 }

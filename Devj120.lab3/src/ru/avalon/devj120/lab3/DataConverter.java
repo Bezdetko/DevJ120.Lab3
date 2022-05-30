@@ -24,14 +24,14 @@ public class DataConverter implements IFileConverter{
         try {
             
             
-            final int BUFFERSIZE = 1024;
+            final int BUFFERSIZE = 1;
             String string = "";
             Charset charset = Charset.forName(charSet);
             char[] buffer = new char[BUFFERSIZE];
             try (FileReader inputFile = new FileReader(inputFileName)){
                 while ( inputFile.read(buffer) != -1){
                     string += new String(buffer);
-                    buffer = new char[BUFFERSIZE];
+//                    buffer = new char[BUFFERSIZE];
                 }
                 
 //           System.out.println(string);
@@ -45,17 +45,34 @@ public class DataConverter implements IFileConverter{
                 System.out.println(ex.getMessage());
             }
             
+          
             byte[] bytes = string.getBytes(charSet);
             String[] binary = new String[bytes.length];
             String binarystring = "";
+            int formatLength;
             for(int i=0 ; i<bytes.length ; i++){
-                binary[i]=String.format("%8s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
-                binarystring += binary[i];
+                if (bytes[i] == 0) {
+                formatLength = 8;
+            }
+                else if (Integer.toBinaryString(bytes[i]).length() % 8 == 0){
+                formatLength = Integer.toBinaryString(bytes[i]).length();}
+                else {
+                     formatLength = (Integer.toBinaryString(bytes[i]).length())/8 * 8 + 8;
+                }
+                
+                binary[i]=String.format("%" + formatLength + "s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
+                binarystring +=  " " + binary[i];
+                
+                
+                System.out.println( bytes[i] + "  " + binary[i] + "  " +Integer.toBinaryString(bytes[i]).length());
+//                System.out.println(binary[i].length() + "   " + binary[i] + "   " + binary[i].length()/8 + "  " + binary[i].length()%8);
+                
                 
 //                binary[i]=Integer.toBinaryString(bytes[i]);                
 //                binarystring += binary[i];
                 
             } 
+            binarystring = binarystring.trim();
             System.out.println(binarystring);
 
 File outputFile = new File(outputFileName);
@@ -80,15 +97,16 @@ try (FileWriter fw = new FileWriter(outputFile, false)){
     @Override
     public String toText(String inputFileName, String outputFileName, String charSet) {
         
-        final int BUFFERSIZE = 8;
+        final int BUFFERSIZE = 32;
             String  binaryString = "";
             Charset charset = Charset.forName(charSet);
             char[] buffer = new char[BUFFERSIZE];
             
             try (FileReader inputFile = new FileReader(inputFileName)){
                 while ( inputFile.read(buffer) != -1){
-                    binaryString =  binaryString + new String(buffer) + "-" ;
-                    buffer = new char[BUFFERSIZE];
+                    binaryString += new String(buffer);                    
+//                    binaryString =  binaryString + new String(buffer) + "-" ;
+//                    buffer = new char[BUFFERSIZE];
                 }
                 } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
@@ -96,7 +114,7 @@ try (FileWriter fw = new FileWriter(outputFile, false)){
                 System.out.println(ex.getMessage());
             }
              
-           String [] bytesString = binaryString.split("-");
+           String [] bytesString = binaryString.split(" ");
            byte [] textByte = new byte[bytesString.length];
            for (int i=0; i<bytesString.length; i++){
                textByte[i] = Byte.parseByte(bytesString[i], 2);
