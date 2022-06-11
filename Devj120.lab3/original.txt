@@ -1,41 +1,10 @@
 1234567890
-!"№;%:?*()
+!"#;%:?*()
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
 
-1234567890
-!"№;%:?*()
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
+123,434
+ZYXWVUTSRQPONMLKJHGFEDCBA
+zyxwvutsrqponmlkjhgfedcba
 
-1234567890
-!"№;%:?*()
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
-
-1234567890
-!"№;%:?*()
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
-
-1234567890
-!"№;%:?*()
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
-
-1234567890
-!"№;%:?*()
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
+2134234 234 2345 12 3
