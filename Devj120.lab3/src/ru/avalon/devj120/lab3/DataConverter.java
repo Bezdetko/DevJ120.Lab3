@@ -33,42 +33,21 @@ public class DataConverter implements IFileConverter {
                         buffer = Arrays.copyOf(buffer, i);
                     }
                     string += new String(buffer);
-//                    buffer = new char[BUFFERSIZE];
                 }
 
-//           System.out.println(string);
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-
             byte[] bytes = string.getBytes(charSet);
             String[] binary = new String[bytes.length];
             String binarystring = "";
-//            int formatLength;
             for (int i = 0; i < bytes.length; i++) {
-//                if (bytes[i] == 0) 
-//                formatLength = 8;
-//            }
-//                else if (Integer.toBinaryString(bytes[i]).length() % 8 == 0){
-//                formatLength = Integer.toBinaryString(bytes[i]).length();}
-//                else {
-//                     formatLength = (Integer.toBinaryString(bytes[i]).length())/8 * 8 + 8;
-//                }
-
                 binary[i] = String.format("%8s", Integer.toBinaryString(bytes[i])).replace(" ", "0");
                 binarystring += " " + binary[i];
-
-//                System.out.println(bytes[i] + "  " + binary[i] + "  " + Integer.toBinaryString(bytes[i]).length());
-//                System.out.println(binary[i].length() + "   " + binary[i] + "   " + binary[i].length()/8 + "  " + binary[i].length()%8);
-
-//                binary[i]=Integer.toBinaryString(bytes[i]);                
-//                binarystring += binary[i];
             }
             binarystring = binarystring.trim();
-//            System.out.println(binarystring);
-
             File outputFile = new File(outputFileName);
             if (!outputFile.exists()) {
                 try {
@@ -77,7 +56,6 @@ public class DataConverter implements IFileConverter {
                     System.out.println(ex.getMessage());
                 }
             }
-
             try (FileWriter fw = new FileWriter(outputFile, false)) {
                 fw.write(binarystring);
             } catch (IOException ex) {
@@ -107,8 +85,6 @@ public class DataConverter implements IFileConverter {
                     buffer = Arrays.copyOf(buffer, i);
                 }
                 binaryString += new String(buffer);
-//                    binaryString =  binaryString + new String(buffer) + "-" ;
-//                    buffer = new char[BUFFERSIZE];
             }
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
@@ -129,13 +105,8 @@ public class DataConverter implements IFileConverter {
         }
 
         String original;
-//        try {
+
         original = new String(textByte, charset);
-//        System.out.println("Текст из двоичного кода:" + "\n"+ original);
-//        } catch (UnsupportedEncodingException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        
 
         File outputFile = new File(outputFileName);
         if (!outputFile.exists()) {
@@ -155,9 +126,6 @@ public class DataConverter implements IFileConverter {
         return outputFileName;
     }
 
-//        return null;
-//        
-//    }
     @Override
     public double getSum(String fileName) throws ConverterException {
     if (fileName == null) throw new ConverterException("fileName == null ");
@@ -180,8 +148,6 @@ public class DataConverter implements IFileConverter {
                 sum+= Double.parseDouble(w);
             }
         }
-                
-            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DataConverter.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

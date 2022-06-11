@@ -1,4 +1,4 @@
-1234567890
+1 2 3 4 5 6 7 8 9 0
 !"#;%:?*()
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
@@ -7,4 +7,4 @@ abcdefghijklmnopqrstuvwxyz
 ZYXWVUTSRQPONMLKJHGFEDCBA
 zyxwvutsrqponmlkjhgfedcba
 
-2134234 234 2345 12 3
+21 34 234 234 2345 12 3.242

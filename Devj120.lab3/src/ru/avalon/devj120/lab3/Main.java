@@ -21,7 +21,7 @@ public class Main {
        dc.toBinary("original.txt", "Binary.txt", "UTF-8");
        dc.toText("Binary.txt", "redable1.txt", "UTF-8");
         try {
-            double d = dc.getSum("original6.txt");
+            double d = dc.getSum("original.txt");
             System.out.println(String.valueOf("сумма всех чисел встречающихся в тексте: " + d));
         } catch (ConverterException ex) {
             System.err.println(ex.getMessage());
